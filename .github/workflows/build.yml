@@ -2,9 +2,15 @@ name: Build ZMK firmware
 on:
   workflow_dispatch:
   push:
-    paths-ignore:
-      - "keymap-drawer/**"
-
+    paths-ignore: ["keymap-drawer/**"]
 jobs:
   build:
-    uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@v0.3.0
+    runs-on: ubuntu-latest
+    container: zmkfirmware/zmk-build-arm:stable
+    steps:
+      - uses: actions/checkout@v4
+      - run: west init -l config && west update --narrow && west zephyr-export
+      - run: west zmk-build -d ./build -q
+      - run: find build -name zmk.uf2 -exec cp --parents {} firmware \\;
+      - uses: actions/upload-artifact@v4
+        with: {name: firmware, path: firmware}
