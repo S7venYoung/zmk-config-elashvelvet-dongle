@@ -4,7 +4,6 @@
  * SPDX-License-Identifier: MIT
  */
 #include "velvet.dtsi"
-#include "trackball.dtsi"
 #include <input/processors.dtsi>
 #include <input/processors/runtime-input-processor.dtsi>
 #include <behaviors/battery_history_request.dtsi>
@@ -33,18 +32,3 @@
         ;
 };
 
-/ {
-    trackball_listener {
-        status = "okay";
-        compatible = "zmk,input-listener";
-        device = <&trackball>;
-        input-processors = <&mouse_runtime_input_processor>;
-
-        scroller {
-            layers = <5>;
-            input-processors =
-                <&zip_xy_to_scroll_mapper &scroll_runtime_input_processor>,
-                <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
-        };
-    };
-};
