@@ -1,7 +1,6 @@
 #define BASE 0
 #define LOWER 1
 
-#include <zephyr/dt-bindings/input/input-event-codes.h>
 #include <behaviors/toggle_io.dtsi>
 #include <behaviors/on_io.dtsi>
 #include <behaviors/off_io.dtsi>

@@ -197,17 +197,6 @@
             label = "Modify";
         };
 
-        Mouse {
-            bindings = <
-&trans  &trans  &msc SCRL_UP  &mmv MOVE_UP  &msc SCRL_DOWN  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &mkp MCLK     &mkp LCLK     &mkp RCLK       &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans        &trans        &trans          &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans        &trans        &trans                  &trans  &trans  &trans  &trans  &trans
-            >;
-
-            label = "Mouse";
-        };
-
         Flash {
             bindings = <
 &dongle_bootload_macro  &trans      &trans        &kp UP    &trans     &trans             &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4  &trans
