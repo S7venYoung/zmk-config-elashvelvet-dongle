@@ -17,6 +17,10 @@ manifest:
     - name: gpeye
       url-base: https://github.com/GPeye
   projects:
+    - name: zmk-west-commands
+      remote: cormoran
+      revision: v1.0.0
+      import: true
     - name: zmk
       remote: cormoran
       revision: main+dya
