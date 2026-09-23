@@ -33,10 +33,6 @@
         diode-direction = "col2row";
     };
 
-    sensors {
-		compatible = "zmk,keymap-sensors";
-	};
-
 };
 
 
