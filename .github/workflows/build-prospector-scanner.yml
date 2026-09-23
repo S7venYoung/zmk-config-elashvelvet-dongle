@@ -14,17 +14,17 @@ jobs:
     container: zmkfirmware/zmk-build-arm:stable
     steps:
       - uses: actions/checkout@v4
-      - run: west init -l scanner/config && west update --narrow && west zephyr-export
+      - run: west init -l scanner/config && cd scanner && west update --narrow && west zephyr-export
       - name: Build Prospector scanner with Codex2 theme and touch
         env:
           ZMK_CONFIG: ${{ github.workspace }}/scanner/config
         run: >-
-          west build -s zmk/app -d build/prospector_scanner
+          cd scanner && west build -s zmk/app -d build/prospector_scanner
           -b xiao_ble/nrf52840/zmk --
           -DSHIELD=prospector_scanner
           -DZMK_CONFIG=$ZMK_CONFIG
           -DEXTRA_CONF_FILE=$ZMK_CONFIG/prospector_scanner_touch.conf
-      - run: mkdir -p firmware && cp build/prospector_scanner/zephyr/zmk.uf2 firmware/prospector_scanner_codex2_touch.uf2
+      - run: mkdir -p firmware && cp scanner/build/prospector_scanner/zephyr/zmk.uf2 firmware/prospector_scanner_codex2_touch.uf2
       - uses: actions/upload-artifact@v4
         with:
           name: prospector-scanner-codex2

@@ -84,4 +84,4 @@ manifest:
       revision: prospector-themes
       path: modules/zmk-prospector-themes
   self:
-    path: scanner/config
+    path: config
