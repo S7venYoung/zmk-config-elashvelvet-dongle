@@ -1,0 +1,87 @@
+manifest:
+  version: 1.2
+  defaults:
+    remote: cormoran
+    revision: main
+  remotes:
+    - name: cormoran
+      url-base: https://github.com/cormoran
+    - name: zmkfirmware
+      url-base: https://github.com/zmkfirmware
+    - name: gpeye
+      url-base: https://github.com/GPeye
+    - name: tokyo2006
+      url-base: https://github.com/tokyo2006
+    - name: carrefinho
+      url-base: https://github.com/carrefinho
+    - name: s7venyoung
+      url-base: https://github.com/S7venYoung
+  projects:
+    - name: mario-peripheral-animation
+      remote: gpeye
+      revision: main
+    - name: zmk
+      remote: cormoran
+      revision: main+dya
+      clone-depth: 1
+      import:
+        file: app/west.yml
+    - name: zephyr
+      remote: cormoran
+      revision: v4.1.0+zmk-fixes+nrf-half-duplex-uart
+      clone-depth: 1
+      import:
+        name-blocklist:
+          - ci-tools
+          - hal_altera
+          - hal_cypress
+          - hal_infineon
+          - hal_microchip
+          - hal_nxp
+          - hal_openisa
+          - hal_xtensa
+          - hal_st
+          - hal_ti
+          - loramac-node
+          - mcuboot
+          - mcumgr
+          - net-tools
+          - openthread
+          - edtt
+          - trusted-firmware-m
+          - chre
+    - name: zmk-feature-custom-settings
+      remote: cormoran
+      revision: main
+    - name: zmk-feature-device-info
+      remote: cormoran
+      revision: main
+    - name: zmk-feature-runtime-combo
+      remote: cormoran
+      revision: main
+      import: true
+    - name: zmk-behavior-runtime-sensor-rotate
+      remote: cormoran
+      revision: main
+    - name: zmk-module-ble-management
+      remote: cormoran
+      revision: main
+    - name: zmk-module-battery-history
+      remote: cormoran
+      revision: main
+    - name: zmk-module-settings-rpc
+      remote: cormoran
+      revision: main
+    - name: zmk-module-runtime-input-processor
+      remote: cormoran
+      revision: main
+    - name: prospector-zmk-module
+      remote: s7venyoung
+      revision: 819bcd40cfa13a76f09413ce7662f04bee902b13
+    - name: zmk-prospector-themes
+      remote: s7venyoung
+      repo-path: zmk-prospector
+      revision: prospector-themes
+      path: modules/zmk-prospector-themes
+  self:
+    path: scanner/config

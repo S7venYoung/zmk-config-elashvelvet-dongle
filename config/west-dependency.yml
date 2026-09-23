@@ -16,6 +16,8 @@ manifest:
       url-base: https://github.com/a741725193
     - name: gpeye
       url-base: https://github.com/GPeye
+    - name: s7venyoung
+      url-base: https://github.com/S7venYoung
   projects:
     - name: zmk-west-commands
       remote: cormoran
@@ -37,5 +39,8 @@ manifest:
     - name: zmk-tog-io
       remote: a741725193
       revision: main
+    - name: prospector-zmk-module
+      remote: s7venyoung
+      revision: 819bcd40cfa13a76f09413ce7662f04bee902b13
   self:
     path: config

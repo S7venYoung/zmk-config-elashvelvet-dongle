@@ -7,7 +7,10 @@
 - 左右两侧使用 nice!nano 控制器，通过 BLE split 连接。
 - 左侧构建包含 `nice_view_custom` 屏幕；右侧构建包含 Nice!View 和 ZMK Studio 支持。
 - 右侧固件启用 ZMK Studio、USB UART Studio RPC，以及 BLE 管理和设置 RPC；左右侧启用 split relay/settings RPC。
+- 右侧 central 额外广播 Prospector 键盘状态，供 Prospector scanner 接收；扫描器使用独立 Zephyr 4.1 构建环境，不改变左右键盘的 ZMK 0.4 构建环境。
+- Prospector scanner 使用 XIAO BLE / nRF52840，启用触控操作，并选择 Codex2 配额仪表盘主题。
 - GitHub Actions 同时构建左右侧固件和 `settings_reset` 固件，并将 UF2 文件作为 `firmware` artifact 上传。
+- Prospector scanner 由单独的 **Build Prospector scanner** workflow 构建，UF2 artifact 名为 `prospector-scanner-codex2`。
 - 按键布局和图示见 [键位图](keymap-drawer/velvet.svg)。
 
 ## 已移除的硬件功能
@@ -23,6 +26,8 @@
 - `settings_reset`：清除 ZMK 保存的设置；仅在需要重置配对或存储设置时使用
 
 每侧键盘应刷写对应的 UF2 文件。左右固件均使用 nice!nano 目标板。
+
+Prospector scanner 是独立的 XIAO BLE 设备，刷写 `prospector_scanner_codex2_touch.uf2`。扫描器的 Codex2 页面通过 BLE 状态广播显示键盘连接、电量、活动层和输入状态；右侧键盘固件需要与扫描器固件一起更新，才能发送对应状态数据。
 
 ## 本地构建
 

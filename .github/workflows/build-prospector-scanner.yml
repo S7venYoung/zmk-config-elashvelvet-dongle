@@ -1,0 +1,31 @@
+name: Build Prospector scanner
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'scanner/**'
+      - '.github/workflows/build-prospector-scanner.yml'
+      - 'config/west-dependency.yml'
+      - 'boards/shields/velvet/velvet_right.conf'
+
+jobs:
+  build-scanner:
+    runs-on: ubuntu-latest
+    container: zmkfirmware/zmk-build-arm:stable
+    steps:
+      - uses: actions/checkout@v4
+      - run: west init -l scanner/config && west update --narrow && west zephyr-export
+      - name: Build Prospector scanner with Codex2 theme and touch
+        env:
+          ZMK_CONFIG: ${{ github.workspace }}/scanner/config
+        run: >-
+          west build -s zmk/app -d build/prospector_scanner
+          -b xiao_ble/nrf52840/zmk --
+          -DSHIELD=prospector_scanner
+          -DZMK_CONFIG=$ZMK_CONFIG
+          -DEXTRA_CONF_FILE=$ZMK_CONFIG/prospector_scanner_touch.conf
+      - run: mkdir -p firmware && cp build/prospector_scanner/zephyr/zmk.uf2 firmware/prospector_scanner_codex2_touch.uf2
+      - uses: actions/upload-artifact@v4
+        with:
+          name: prospector-scanner-codex2
+          path: firmware
