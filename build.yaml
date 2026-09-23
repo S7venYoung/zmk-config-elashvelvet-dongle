@@ -3,26 +3,24 @@
 include:
   - board: xiao_ble//zmk
     shield: velvet_prospector_dongle prospector_adapter prospector_theme_walle
-    artifact-name: velvet_prospector_dongle_walle
+    artifact: velvet_prospector_dongle_walle
   - board: nice_nano//zmk
     shield: velvet_left nice_view_custom velvet_prospector_peripheral
-    artifact-name: velvet_left_dongle
+    artifact: velvet_left_dongle
   - board: nice_nano//zmk
     shield: velvet_right nice_view velvet_prospector_peripheral
-    artifact-name: velvet_right_dongle
+    artifact: velvet_right_dongle
   - board: xiao_ble//zmk
     shield: settings_reset
-    artifact-name: settings_reset_xiao
-  - board: nice_nano//zmk
-    shield: settings_reset
-    artifact-name: settings_reset_nice_nano
+    artifact: settings_reset_xiao
   - board: nice_nano//zmk
     shield: velvet_left nice_view_custom
-    artifact-name: velvet_left 
+    artifact: velvet_left
   - board: nice_nano//zmk
     shield: velvet_right nice_view
     snippet: studio-rpc-usb-uart
     cmake-args: -DCONFIG_ZMK_STUDIO=y -DCONFIG_ZMK_STUDIO_LOCKING=n
-    artifact-name: velvet_right
+    artifact: velvet_right
   - board: nice_nano//zmk
     shield: settings_reset
+    artifact: settings_reset

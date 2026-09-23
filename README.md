@@ -30,8 +30,10 @@ Prospector dongle 模式需要刷写同一次 Actions 构建的以下三个固�
 - `velvet_prospector_dongle_walle`：XIAO Prospector 接收器，也是电脑的 USB 键盘设备。
 - `velvet_left_dongle`：左手 peripheral。
 - `velvet_right_dongle`：右手 peripheral。
+- `settings_reset_xiao`：清除 Prospector 接收器保存的 BLE 配对。
+- `settings_reset`：清除 nice!nano 键盘保存的 BLE 配对。
 
-初次切换模式时，接收器和左右手应使用同一构建批次固件；如果原右手曾作为 split central，先刷写 `settings_reset_nice_nano` 清除旧配对，再将两手与 Prospector 重新配对。恢复普通键盘模式时，刷写原 `velvet_left` 与 `velvet_right` 固件。显示主题采用 Prospector 的 `prospector_theme_walle`，主题代码由 `zmk-prospector` 的 `prospector-themes` 模块提供。Dongle 模式不启用 DYA Studio 扩展、编码器、轨迹球或 scanner BLE observer。
+初次切换模式时，接收器和左右手应使用同一构建批次固件；分别刷写 `settings_reset_xiao` 与 `settings_reset` 清除新旧 central/peripheral 保存的配对，再将两手与 Prospector 重新配对。恢复普通键盘模式时，刷写原 `velvet_left` 与 `velvet_right` 固件。显示主题采用 Prospector 的 `prospector_theme_walle`，主题代码由 `zmk-prospector` 的 `prospector-themes` 模块提供。Dongle 模式不启用 DYA Studio 扩展、编码器、轨迹球或 scanner BLE observer。
 
 ## 本地构建
 
