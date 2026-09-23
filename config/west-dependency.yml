@@ -1,0 +1,41 @@
+manifest:
+  remotes:
+    - name: cormoran
+      url-base: https://github.com/cormoran
+    - name: zmkfirmware
+      url-base: https://github.com/zmkfirmware
+    - name: badjeff
+      url-base: https://github.com/badjeff
+    - name: mctechnology17
+      url-base: https://github.com/mctechnology17
+    - name: eyelash
+      url-base: https://github.com/a741725193
+    - name: infused-kim
+      url-base: https://github.com/infused-kim
+    - name: a741725193
+      url-base: https://github.com/a741725193
+    - name: gpeye
+      url-base: https://github.com/GPeye
+  projects:
+    - name: zmk-west-commands
+      remote: cormoran
+      revision: v1.0.0
+      import: true
+    - name: zmk
+      remote: cormoran
+      revision: main+dya
+      import: app/west.yml
+    - name: zmk-module-ble-management
+      remote: cormoran
+      revision: main
+    - name: zmk-module-settings-rpc
+      remote: cormoran
+      revision: main
+    - name: mario-peripheral-animation
+      remote: gpeye
+      revision: main
+    - name: zmk-tog-io
+      remote: a741725193
+      revision: main
+  self:
+    path: config
