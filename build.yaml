@@ -1,6 +1,21 @@
 # This file generates the GitHub Actions matrix
 ---
 include:
+  - board: xiao_ble//zmk
+    shield: velvet_prospector_dongle prospector_adapter prospector_theme_walle
+    artifact-name: velvet_prospector_dongle_walle
+  - board: nice_nano//zmk
+    shield: velvet_left nice_view_custom velvet_prospector_peripheral
+    artifact-name: velvet_left_dongle
+  - board: nice_nano//zmk
+    shield: velvet_right nice_view velvet_prospector_peripheral
+    artifact-name: velvet_right_dongle
+  - board: xiao_ble//zmk
+    shield: settings_reset
+    artifact-name: settings_reset_xiao
+  - board: nice_nano//zmk
+    shield: settings_reset
+    artifact-name: settings_reset_nice_nano
   - board: nice_nano//zmk
     shield: velvet_left nice_view_custom
     artifact-name: velvet_left 
