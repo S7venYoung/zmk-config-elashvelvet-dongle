@@ -11,6 +11,6 @@ jobs:
       - uses: actions/checkout@v4
       - run: west init -l config && west update --narrow && west zephyr-export
       - run: west zmk-build -d ./build -q
-      - run: find build -name zmk.uf2 -exec cp --parents {} firmware \\;
+      - run: mkdir -p firmware && find build -name zmk.uf2 -print0 | xargs -0 -I{} cp --parents {} firmware
       - uses: actions/upload-artifact@v4
         with: {name: firmware, path: firmware}
