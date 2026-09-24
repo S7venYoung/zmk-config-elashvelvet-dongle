@@ -19,3 +19,7 @@ config ZMK_SPLIT_ROLE_CENTRAL
 # Keyboard halves use PWM backlight; the Prospector dongle does not.
 config ZMK_BACKLIGHT
     default y if SHIELD_VELVET_LEFT || (SHIELD_VELVET_RIGHT && !SHIELD_VELVET_PROSPECTOR_PERIPHERAL)
+
+# Keep the built-in Nice!View screen for keyboard halves; Prospector selects its own screen.
+config ZMK_DISPLAY_STATUS_SCREEN_BUILT_IN
+    default y if SHIELD_VELVET_LEFT || (SHIELD_VELVET_RIGHT && !SHIELD_VELVET_PROSPECTOR_PERIPHERAL)
